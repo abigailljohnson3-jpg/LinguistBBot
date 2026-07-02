@@ -1,9 +1,12 @@
-# config.py
-# Get your bot token from @BotFather on Telegram
+import os
 
-BOT_TOKEN = "YOUR_BOT_TOKEN_HERE"
+# Get bot token from environment variable (Railway)
+BOT_TOKEN = os.environ.get('BOT_TOKEN')
 
-# Note: For security, it's better to use environment variables on Railway
-# Instead of hardcoding your token here, you can:
-# import os
-# BOT_TOKEN = os.environ.get('BOT_TOKEN', 'YOUR_BOT_TOKEN_HERE')
+# Check if token exists
+if not BOT_TOKEN:
+    print("❌ ERROR: BOT_TOKEN environment variable not set!")
+    print("Please set BOT_TOKEN in Railway variables")
+    exit(1)
+
+print("✅ BOT_TOKEN loaded successfully!")
